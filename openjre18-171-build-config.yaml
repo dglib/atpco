@@ -16,7 +16,7 @@ spec:
         kind: DockerImage
         name: 'registry.redhat.io/rhel7-atomic:7.4-131'
       pullSecret:
-        name: 6333402-ocp4-sa-pull-secret
+        name: registry-secret
   postCommit: {}
   source:
     type: Binary
