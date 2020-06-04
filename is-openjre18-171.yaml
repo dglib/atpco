@@ -1,0 +1,30 @@
+{
+	"kind": "List",
+	"apiVersion": "v1",
+	"metadata": {
+		"name": "openjre18-171:1.0",
+         "description": "Builder image for running java applications"
+	},
+	"items": [{
+			"kind": "ImageStream",
+			"apiVersion": "v1",
+			"metadata": {
+				"name": "openjre18-171"
+			},
+			"spec": {
+				"dockerImageRepository": "",
+				"tags": [{
+					"name": "1.0",
+					"annotations": {
+						"description": "Open Jre builder image",
+						"iconClass": "icon-tomcat",
+						"tags": "builder,openjre",
+						"supports": "java:1.8",
+						"version": "1.0"
+					}
+				}]
+			}
+		}
+
+	]
+}

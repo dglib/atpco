@@ -1,0 +1,26 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: openjre18-171
+  namespace: test
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'openjre18-171:1.0'
+  resources: {}
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: 'registry.redhat.io/rhel7-atomic:7.4-131'
+      pullSecret:
+        name: 6333402-ocp4-sa-pull-secret
+  postCommit: {}
+  source:
+    type: Binary
+    binary: {}
+  triggers: []
+  runPolicy: Serial
+status:
