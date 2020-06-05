@@ -116,7 +116,7 @@ If the build test is successful, create a MachineConfig instead of secrets/confi
     # REMOVE # RUN rm /etc/rhsm-host
     ```
 4. Remove the ConfigMap and Secret from the above test
-` oc -n test delete secret etc-pki-entitlement `
+` oc -n test delete secret etc-pki-entitlement ` \
 ` oc -n test delete configmap rhsm-conf `
 
 5. If you accidently removed the redhat-registry secret, this BuildConfig requires it, let's put it back \
