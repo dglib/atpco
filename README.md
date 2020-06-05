@@ -54,7 +54,7 @@ spec:
     storage:
       files:
       - contents:
-          source: data:text/plain;charset=utf-8;base64,IyBSZWQg…
+          source: data:text/plain;charset=utf-8;base64,<ENCODED_VALUE>
         filesystem: root
         mode: 0644
         path: /etc/rhsm/rhsm.conf
@@ -73,7 +73,7 @@ spec:
     storage:
       files:
       - contents:
-          source: data:text/plain;charset=utf-8;base64,LS0tLS1TiB...
+          source: data:text/plain;charset=utf-8;base64,<ENCODED_VALUE>
         filesystem: root
         mode: 0644
         path: /etc/pki/entitlement/entitlement.pem
@@ -93,7 +93,7 @@ spec:
     storage:
       files:
       - contents:
-          source: data:text/plain;charset=utf-8;base64,LS0tLS1CR...
+          source: data:text/plain;charset=utf-8;base64,<ENCODED_VALUE>
         filesystem: root
         mode: 0644
         path: /etc/pki/entitlement/entitlement-key.pem
