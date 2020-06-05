@@ -2,7 +2,6 @@ kind: BuildConfig
 apiVersion: build.openshift.io/v1
 metadata:
   name: openjre18-171
-  namespace: test
 spec:
   output:
     to:
@@ -16,11 +15,22 @@ spec:
         kind: DockerImage
         name: 'registry.redhat.io/rhel7-atomic:7.4-131'
       pullSecret:
-        name: registry-secret
+        name: redhat-registry
   postCommit: {}
   source:
     type: Binary
     binary: {}
+    # configMaps:
+    # - configMap:
+    #     name: rhsm-conf
+    #   destinationDir: rhsm-conf
+    # - configMap:
+    #     name: rhsm-ca
+    #   destinationDir: rhsm-ca
+    # secrets:
+    # - secret:
+    #     name: etc-pki-entitlement
+    #   destinationDir: etc-pki-entitlement
   triggers: []
   runPolicy: Serial
 status:
