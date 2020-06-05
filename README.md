@@ -1,4 +1,4 @@
-
+###### Note: Customers of Red Hat OCP generally receive subs for RHEL, these may be used for buildconfigs on the platform.
 
 ## I. - Testing
 
