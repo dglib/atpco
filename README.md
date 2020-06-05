@@ -4,8 +4,7 @@
 
 Access an existing RHEL host with an active entitlement and copy down these files…
 
-/etc/rhsm/rhsm.conf \
-/etc/rhsm/ca/redhat-uep.pem
+/etc/rhsm/rhsm.conf
 
 Use either the active entitlements of this RHEL host by copying them down too… or generate a new host with an active entitlement and use its cert/key .pem files.
 
