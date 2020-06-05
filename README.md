@@ -18,13 +18,13 @@ Access an existing RHEL host with an active entitlement and copy down these file
 3. For this test, create a pull-secret with your registry.redhat.io account credentials stored \
 ` oc -n test create secret docker-registry redhat-registry --docker-server=registry.redhat.io --docker-username=<YOURUSERNAME> --docker-password=<YOURPASSWORD> --docker-email=<YOUREMAIL> `
 
-4. Install the ImageStream; I'm doing this in the `test` namespace, but you can easily install it in the `openshift` namespace to provide global access. \
+4. Install the ImageStream; I'm doing this in the `test` namespace, but you can easily install it in the `openshift` namespace to provide global access \
 ` oc -n test create -f is-openjre18-171.yaml `
 
 5. Install the BuildConfig \
 ` oc -n test create -f openjre18-171-build-config.yaml `
 
-6. Modify the Dockerfile to use these entitlements:
+6. Modify the Dockerfile to use these entitlements
     ```
     USER root
     ### OCP4 ENTITLEMENTS
