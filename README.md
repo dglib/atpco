@@ -14,7 +14,7 @@ Use either the active entitlements of this RHEL host by copying them down too…
 
 Create the secret and configmaps
 
-`oc create configmap rhsm-conf --from-file rhsm.conf`
+`oc create configmap rhsm-conf --from-file rhsm.conf` \
 `oc -n test create secret generic etc-pki-entitlement --from-file 35759179968490-key.pem --from-file 35759179968490.pem`
 
 Modify the Dockerfile to use these entitlements:
@@ -34,8 +34,8 @@ If the build test is successful, create a MachineConfig instead of secrets/confi
 
 Encode these 3 files…
 
-`base64 -w0 rhsm.conf > rhsm.64`
-`base64 -w0 35759179968490-key.pem > 35759179968490-key.64`
+`base64 -w0 rhsm.conf > rhsm.64` \
+`base64 -w0 35759179968490-key.pem > 35759179968490-key.64` \
 `base64 -w0 35759179968490.pem > 35759179968490.64`
 
 Use these base64 values as inputs in your MachineConfig
