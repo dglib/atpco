@@ -4,12 +4,12 @@
 
 Access an existing RHEL host with an active entitlement and copy down these files…
 
-/etc/rhsm/rhsm.conf
+/etc/rhsm/rhsm.conf \
 /etc/rhsm/ca/redhat-uep.pem
 
 Use either the active entitlements of this RHEL host by copying them down too… or generate a new host with an active entitlement and use its cert/key .pem files.
 
-/etc/pki/entitlement/35759179968490-key.pem
+/etc/pki/entitlement/35759179968490-key.pem \
 /etc/pki/entitlement/35759179968490.pem
 
 Create the secret and configmaps
