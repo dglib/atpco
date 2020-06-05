@@ -115,7 +115,7 @@ If the build test is successful, create a MachineConfig instead of secrets/confi
     # REMOVE # Delete /etc/rhsm-host to use entitlements from the build container
     # REMOVE # RUN rm /etc/rhsm-host
     ```
-4. Remove the ConfigMap and Secret from the above test
+4. Remove the ConfigMap and Secret from the above test \
 ` oc -n test delete secret etc-pki-entitlement ` \
 ` oc -n test delete configmap rhsm-conf `
 
