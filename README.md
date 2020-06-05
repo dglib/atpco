@@ -2,12 +2,9 @@
 
 ## I. - Testing
 
-Access an existing RHEL host with an active entitlement and copy down these files…
+Access an existing RHEL host with an active entitlement and copy down these files… or generate a new host with an active entitlement and use its cert/key .pem files.
 
-/etc/rhsm/rhsm.conf
-
-Use either the active entitlements of this RHEL host by copying them down too… or generate a new host with an active entitlement and use its cert/key .pem files.
-
+/etc/rhsm/rhsm.conf \
 /etc/pki/entitlement/35759179968490-key.pem \
 /etc/pki/entitlement/35759179968490.pem
 
@@ -29,7 +26,7 @@ RUN rm /etc/rhsm-host
 
 ## II. - MachineConfig
 
-If the build test is successful, create a MachineConfig instead of secrets/configmaps so any worker node / job can use these resources. *this helps with migrations of workloads from OCP 3.11 (RHEL) to OCP 4.x (RHCOS).
+If the build test is successful, create a MachineConfig instead of secrets/configmaps so any worker node / job can use these resources. _*this helps with migrations of workloads from OCP 3.11 (RHEL) to OCP 4.x (RHCOS)_.
 
 Encode these 3 files…
 
