@@ -1,7 +1,5 @@
 FROM  registry.redhat.io/rhel7-atomic:7.4-131
-
-
-MAINTAINER Veerendra K Akula <vakula@atpco.net>
+MAINTAINER Shaker Gilbert <shaker@redhat.com>
 
 ENV JAVA_HOME="/usr/lib/jvm/jre-1.8.0" \
     JAVA_VENDOR="openjdk" \
@@ -19,10 +17,15 @@ LABEL io.k8s.description="Platform for running plain Java applications" \
       io.openshift.s2i.destination="/tmp" \
       io.openshift.expose-services="8080" \
       org.jboss.deployments-dir="/deployments"
-
-  
 	  
 USER root
+### OCP4 ENTITLEMENTS - Commented out for MachineConfig 
+#COPY ./etc-pki-entitlement /etc/pki/entitlement
+#COPY ./rhsm-conf /etc/rhsm
+#COPY ./rhsm-ca /etc/rhsm/ca
+# Delete /etc/rhsm-host to use entitlements from the build container
+#RUN rm /etc/rhsm-host
+
 RUN microdnf --nodocs --enablerepo=rhel-7-server-rpms  install java-1.8.0-openjdk wget rsync which tar unzip \
     && microdnf clean all \
     && groupadd -r java -g 1000 \
@@ -36,8 +39,5 @@ RUN mkdir -p /deployments/data \
    && chown -R java:root /deployments
 
 USER 2222
-
 WORKDIR /opt/java
-
-#Expose Ports
 EXPOSE 8080
