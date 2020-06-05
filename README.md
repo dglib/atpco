@@ -14,11 +14,11 @@ Use either the active entitlements of this RHEL host by copying them down too…
 
 Create the secret and configmaps
 
-## not needed ## oc create configmap rhsm-ca --from-file redhat-uep.pem
-oc create configmap rhsm-conf --from-file rhsm.conf
-oc -n test create secret generic etc-pki-entitlement --from-file 35759179968490-key.pem --from-file 35759179968490.pem
-Modify the Dockerfile to use these entitlements:
+`oc create configmap rhsm-conf --from-file rhsm.conf`
+`oc -n test create secret generic etc-pki-entitlement --from-file 35759179968490-key.pem --from-file 35759179968490.pem`
 
+Modify the Dockerfile to use these entitlements:
+```
 USER root
 ### OCP4 ENTITLEMENTS
 COPY ./etc-pki-entitlement /etc/pki/entitlement
@@ -26,7 +26,7 @@ COPY ./rhsm-conf /etc/rhsm
 COPY ./rhsm-ca /etc/rhsm/ca
 # Delete /etc/rhsm-host to use entitlements from the build container
 RUN rm /etc/rhsm-host
-
+```
 
 ## II. - MachineConfig
 
@@ -34,13 +34,13 @@ If the build test is successful, create a MachineConfig instead of secrets/confi
 
 Encode these 3 files…
 
-base64 -w0 rhsm.conf > rhsm.64
-base64 -w0 35759179968490-key.pem > 35759179968490-key.64
-base64 -w0 35759179968490.pem > 35759179968490.64
+`base64 -w0 rhsm.conf > rhsm.64`
+`base64 -w0 35759179968490-key.pem > 35759179968490-key.64`
+`base64 -w0 35759179968490.pem > 35759179968490.64`
 
 Use these base64 values as inputs in your MachineConfig
 
-
+```
 apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfig
 metadata:
@@ -97,5 +97,5 @@ spec:
         filesystem: root
         mode: 0644
         path: /etc/pki/entitlement/entitlement-key.pem
-
+```
 
