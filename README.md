@@ -24,7 +24,7 @@ Access an existing RHEL host with an active entitlement and copy down these file
 5. Install the BuildConfig \
 ` oc -n test create -f openjre18-171-build-config.yaml `
 
-6. Modify the Dockerfile to use these entitlements
+6. Modify the Dockerfile to use these entitlement and registry account
     ```
     USER root
     ### OCP4 ENTITLEMENTS
@@ -35,7 +35,7 @@ Access an existing RHEL host with an active entitlement and copy down these file
     RUN rm /etc/rhsm-host
     ```
 
-7. Run the test from a local directory uploading the Dockerfile \
+7. Run the test from a local machine (your dev / build machine) uploading the Dockerfile in the process \
 ` oc start-build openjre18-171 --from-dir=. --follow `
 
 ## II MachineConfig
@@ -105,7 +105,7 @@ If the build test is successful, create a MachineConfig instead of secrets/confi
     ```
 ##### _NOTE: Adding these MachineConfigs will cause the worker nodes to recycle; although workloads should be configured for HA, it is recommened to perform these during a maintenance window._
 
-3. Remove the Dockerfile modifcations from the above test
+3. Remove the Dockerfile modifcations from the above test since copying from configmap/secrets into the build is no longer required.
     ```
     USER root
     ### OCP4 ENTITLEMENTS
