@@ -20,6 +20,10 @@ spec:
   source:
     type: Binary
     binary: {}
+    ##---------------------------------------
+    ## This section is NOT required if you are using the MachineConfg,
+    ## uncomment for the "Testing" section to leverage ConfigMaps & Secrets.
+    ##
     # configMaps:
     # - configMap:
     #     name: rhsm-conf
@@ -31,6 +35,7 @@ spec:
     # - secret:
     #     name: etc-pki-entitlement
     #   destinationDir: etc-pki-entitlement
+    ##---------------------------------------
   triggers: []
   runPolicy: Serial
 status:
